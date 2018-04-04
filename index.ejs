@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<title> MY express site</title>
+       <script src = "server.js"></script>
+        <style>
+  <style type="text/css">
+
+
+
+  </style>
+	</head>
+	<body>
+
+
+
+<div style="width:500px;float:right;text-align:left">
+<fieldset style = "background-color:#cce0ff">
+<legend style=" margin-left:20px;background-color:#1f497d; padding-left:10px; padding-top:5px; padding-right:120px; padding-bottom:5px; ; color:white; border-radius:15px; border:8px solid #eeece1; font-size:40px;" ><b> Add Tasks </b> </legend>
+
+<form method = "POST" action = "/tasks/add" >
+	<label>id</label>
+	<br>
+	<input type = "text" name = 'id'>
+	<br>
+	<label>name</label>
+	<br>
+	<input type = "text" name = 'name'>
+	<br>
+	<label>status</label>
+	<br>
+	<input type = "text" name = 'status'>
+	<input type = "submit" value = "Submit">
+	
+
+</form>
+</fieldset>
+</div>
+
+
+
+<div style="width:400px;float:right;text-align:left">
+<fieldset style = "background-color:#cce0ff">
+<legend style=" margin-left:20px;background-color:#1f497d; padding-left:10px; padding-top:5px; padding-right:120px; padding-bottom:5px; ; color:white; border-radius:15px; border:8px solid #eeece1; font-size:40px;" ><b> Update Tasks </b> </legend>
+
+<h1>Update tasks</h1>
+<form method = "POST" action = "/tasks/update" >
+	<label>New id</label>
+	<br>
+	<input type = "text" name="id">
+	<br>
+	<label>New name</label>
+	<br>
+	<input type = "text" name = 'name'>
+	<br>
+	<label>New status</label>
+	<br>
+	<input type = "text" name = 'status'>
+	<input type = "submit" value = "update">
+</form>
+</fieldset>
+</div>
+
+
+
+
+
+
+<div >
+<fieldset style = "background-color:#cce0ff">
+<legend style=" margin-left:20px;background-color:#1f497d; padding-left:10px; padding-top:5px; padding-right:120px; padding-bottom:5px; ; color:white; border-radius:15px; border:8px solid #eeece1; font-size:40px;" ><b><%=title%> </b> </legend>
+
+ 	<h1><%= title %></h1>
+	<h3><ul>
+		<%  tasks.forEach(function(task){ %>
+			<li><p id = "demo"><%= task.name %>  <br> 
+				ID: <%= task._id %> 
+		 (<%= task.status %>)-<a href="/tasks/delete/<%= task._id %>" class="deleteTask">Delete</a></li></p>
+		
+    
+     <p><button onclick="myFunction()">make it done</button></p>
+	<% }) %>
+	</ul></h3> 
+	</fieldset>
+	</div>
+
+
+
+<script>
+function myFunction() {
+    var str =  document.getElementById("demo").innerHTML;
+    var result = str.strike();
+    document.getElementById("demo").innerHTML = result;
+}
+</script>
+
+
+
+
+		</body>
+</html>
+
+
+	
+
+
